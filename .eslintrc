@@ -9,7 +9,12 @@
     "plugin:react/recommended"
   ],
   "plugins": [
-    "babel"
+    "prettier",
+    "babel",
+    "react",
+    "lodash",
+    "import",
+    "react-hooks"
   ],
   "rules": {
     "arrow-parens": 0,

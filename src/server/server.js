@@ -15,14 +15,10 @@ app.use((req, res) => {
                       <head>
                         <meta charset="utf-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1">
-                        <title>ld-react example</title>
+                        <title>ShopX - The Fast Food People</title>
                       </head>
                       <body>
-                        <div id="reactDiv">${renderToString(
-                          <StaticRouter location={req.url} context={{}}>
-                            <App />
-                          </StaticRouter>,
-                        )}</div>
+                        <div id="reactDiv"/>
                         <script type="application/javascript" src="http://localhost:3002/dist/bundle.js"></script>
                       </body>
                     </html>`;
