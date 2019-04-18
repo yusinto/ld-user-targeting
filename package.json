@@ -1,0 +1,24 @@
+{
+  "name": "ld-user-targeting",
+  "version": "1.0.0",
+  "description": "Demo app to show how to use launchdarkly to target users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusinto/ld-user-targeting.git"
+  },
+  "keywords": [
+    "launchdarkly",
+    "user",
+    "targeting"
+  ],
+  "author": "Yusinto Ngadiman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yusinto/ld-user-targeting/issues"
+  },
+  "homepage": "https://github.com/yusinto/ld-user-targeting#readme"
+}
