@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { withLDConsumer } from 'ldclient-react';
 import pluralize from 'pluralize';
+import cloneDeep from 'lodash/cloneDeep';
 import Products from './products';
-import Context from './context';
+import Context, { contextValue } from './context';
 
 const Root = styled.div`
   color: #001b44;
@@ -13,36 +14,41 @@ const Heading = styled.h1`
   color: #00449e;
 `;
 
-const user = { key: 'yus', firstName: 'Yus', custom: { location: 'sydney', totalCartValue: 0 } };
+const defaultUser = { key: 'yus', firstName: 'Yus', custom: { location: 'sydney', totalCartValue: 0 } };
 
 const Home = ({ flags, ldClient }) => {
-  const [location, setLocation] = useState('unknown');
+  const [user, setUser] = useState({});
   const [cart, setCart] = useState([]);
+  contextValue.user = user;
+  contextValue.setUser = setUser;
+  contextValue.cart = cart;
+  contextValue.setCart = setCart;
 
   const login = () => {
-    setLocation('sydney');
-    ldClient.identify(user);
+    setUser(defaultUser);
+    ldClient.identify(defaultUser);
   };
 
   const onChangeLocation = ({ target: { value } }) => {
-    user.custom.location = value;
-    setLocation(user.custom.location);
-    ldClient.identify(user);
+    const clonedUser = cloneDeep(user);
+    clonedUser.custom.location = value;
+    setUser(clonedUser);
+    ldClient.identify(clonedUser);
   };
 
   let totalCartValue = 0;
   cart.forEach(c => (totalCartValue += c.price));
 
   return (
-    <Context.Provider value={{ cart, updateCart: setCart, user }}>
+    <Context.Provider value={contextValue}>
       <Root>
-        <Heading>Welcome {location !== 'unknown' ? user.firstName : 'to ShopX'}</Heading>
+        <Heading>Welcome {!user.firstName ? user.firstName : 'to ShopX'}</Heading>
         <div>
-          {location !== 'unknown' ? (
+          {typeof user.key !== 'undefined' ? (
             <div>
               <p>
                 You are in:{' '}
-                <select defaultValue={location} t="" placeholder="change location" onChange={onChangeLocation}>
+                <select defaultValue={user.custom.location} placeholder="change location" onChange={onChangeLocation}>
                   <option value="brisbane">Brisbane</option>
                   <option value="melbourne">Melbourne</option>
                   <option value="perth">Perth</option>

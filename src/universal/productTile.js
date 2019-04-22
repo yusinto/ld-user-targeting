@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { withLDConsumer } from 'ldclient-react';
 import context from './context';
+import cloneDeep from 'lodash/cloneDeep';
 
 const ProductTileRoot = styled.div`
   display: flex;
@@ -27,14 +28,18 @@ const AddToCartButton = styled.button`
 `;
 
 const ProductTile = ({ ldClient, heading, image, productName, productId, price }) => {
-  const { cart, updateCart, user } = useContext(context);
+  const { cart, setCart, user, setUser } = useContext(context);
 
   const addToCart = () => {
     let totalCartValue = price;
     cart.forEach(c => (totalCartValue += c.price));
-    user.custom.totalCartValue = totalCartValue;
-    ldClient.identify(user);
-    updateCart(cart.concat([{ productId, productName, price }]));
+
+    const clonedUser = cloneDeep(user);
+    clonedUser.custom.totalCartValue = totalCartValue;
+    ldClient.identify(clonedUser);
+
+    setUser(clonedUser);
+    setCart(cart.concat([{ productId, productName, price }]));
   };
 
   return (

@@ -1,4 +1,5 @@
 import { createContext } from 'react';
 
-const context = createContext({ cart: [], updateCart: () => {}, user: {} });
+export const contextValue = { cart: [], setCart: () => '', user: {}, setUser: () => '' };
+const context = createContext(contextValue);
 export default context;
