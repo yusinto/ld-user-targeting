@@ -42,10 +42,16 @@ const ProductTile = ({ ldClient, heading, image, productName, productId, price }
     setCart(cart.concat([{ productId, productName, price }]));
   };
 
+  const onClickThumbnail = () => {
+    // TODO: launch modal
+  };
+
   return (
     <ProductTileRoot>
       <Heading>{heading}</Heading>
-      <img src={image} />
+      <button onClick={onClickThumbnail}>
+        <img src={image} />
+      </button>
       <h3>{productName}</h3>
       <h3>${price}</h3>
       <AddToCartButton onClick={addToCart}>Add to cart</AddToCartButton>

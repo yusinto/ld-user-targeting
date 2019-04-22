@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { withLDConsumer } from 'ldclient-react';
@@ -23,6 +23,11 @@ const Home = ({ flags, ldClient }) => {
   contextValue.setUser = setUser;
   contextValue.cart = cart;
   contextValue.setCart = setCart;
+
+  useEffect(() => {
+    setUser(defaultUser);
+    setTimeout(() => ldClient.identify(defaultUser));
+  }, []);
 
   const login = () => {
     setUser(defaultUser);
