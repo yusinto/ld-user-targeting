@@ -4,6 +4,7 @@ import { withLDConsumer } from 'ldclient-react';
 import context from './context';
 import cloneDeep from 'lodash/cloneDeep';
 import Modal from './modal';
+import FullImage from '../../assets/chocolates-full.png';
 
 const ProductTileRoot = styled.div`
   display: flex;
@@ -57,7 +58,11 @@ const ProductTile = ({ ldClient, heading, image, productName, productId, price }
       <h3>{productName}</h3>
       <h3>${price}</h3>
       <AddToCartButton onClick={addToCart}>Add to cart</AddToCartButton>
-      {showHideModal ? <Modal>this is a modal!</Modal> : null}
+      {showHideModal ? (
+        <Modal>
+          <img src={FullImage} />
+        </Modal>
+      ) : null}
     </ProductTileRoot>
   );
 };
