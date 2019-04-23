@@ -24,10 +24,10 @@ const Home = ({ flags, ldClient }) => {
   contextValue.cart = cart;
   contextValue.setCart = setCart;
 
-  useEffect(() => {
-    setUser(defaultUser);
-    // setTimeout(() => ldClient.identify(defaultUser));
-  }, []);
+  // useEffect(() => {
+  //   setUser(defaultUser);
+  //   // setTimeout(() => ldClient.identify(defaultUser));
+  // }, []);
 
   const login = () => {
     setUser(defaultUser);
@@ -47,7 +47,7 @@ const Home = ({ flags, ldClient }) => {
   return (
     <Context.Provider value={contextValue}>
       <Root>
-        <Heading>Welcome {!user.firstName ? user.firstName : 'to ShopX'}</Heading>
+        <Heading>Welcome {user.firstName ? user.firstName : 'to ShopX'}</Heading>
         <div>
           {typeof user.key !== 'undefined' ? (
             <div>
