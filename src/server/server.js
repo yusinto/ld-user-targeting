@@ -1,8 +1,8 @@
 import Express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
-import App from '../universal/app';
+// import { StaticRouter } from 'react-router-dom';
+// import App from '../universal/app';
 
 const PORT = 3000;
 const app = Express();

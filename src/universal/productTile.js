@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { withLDConsumer } from 'ldclient-react';
 import context from './context';
 import cloneDeep from 'lodash/cloneDeep';
+import Modal from './modal';
 
 const ProductTileRoot = styled.div`
   display: flex;
@@ -28,6 +29,7 @@ const AddToCartButton = styled.button`
 `;
 
 const ProductTile = ({ ldClient, heading, image, productName, productId, price }) => {
+  const [showHideModal, setShowHideModal] = useState(false);
   const { cart, setCart, user, setUser } = useContext(context);
 
   const addToCart = () => {
@@ -43,7 +45,7 @@ const ProductTile = ({ ldClient, heading, image, productName, productId, price }
   };
 
   const onClickThumbnail = () => {
-    // TODO: launch modal
+    setShowHideModal(true);
   };
 
   return (
@@ -55,6 +57,7 @@ const ProductTile = ({ ldClient, heading, image, productName, productId, price }
       <h3>{productName}</h3>
       <h3>${price}</h3>
       <AddToCartButton onClick={addToCart}>Add to cart</AddToCartButton>
+      {showHideModal ? <Modal>this is a modal!</Modal> : null}
     </ProductTileRoot>
   );
 };

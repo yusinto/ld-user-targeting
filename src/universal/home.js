@@ -26,7 +26,7 @@ const Home = ({ flags, ldClient }) => {
 
   useEffect(() => {
     setUser(defaultUser);
-    setTimeout(() => ldClient.identify(defaultUser));
+    // setTimeout(() => ldClient.identify(defaultUser));
   }, []);
 
   const login = () => {
