@@ -27,7 +27,7 @@
     "express": "^4.16.4",
     "ldclient-js": "2.9.7",
     "ldclient-react": "^2.9.7",
-    "lodash": "4.17.11",
+    "lodash": "4.17.13",
     "pluralize": "7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
