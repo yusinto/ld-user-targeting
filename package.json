@@ -24,7 +24,7 @@
   "homepage": "https://github.com/yusinto/ld-user-targeting#readme",
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "ldclient-js": "2.9.7",
     "ldclient-react": "^2.9.7",
     "lodash": "4.17.11",
